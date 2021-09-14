@@ -1,0 +1,55 @@
+
+<div>
+	<div class="post-actions">
+	  <!-- Precedence (a and b) or (a and c)-->  
+    <% if current_user && (current_user == @post.user || current_user.is_admin?) %>
+		<%= link_to 'Edit', edit_post_path(@post), :id => "edit-btn", :class => "btn btn-light btn-sm" %> 
+		<%= link_to "Delete", post_path(@post), method: :delete,  :id => "delete-btn", :class => "btn btn-danger  btn-sm", data: { confirm: 'Are you sure you want to delete the post?' } %>
+    <% end %>
+	</div>
+
+	<h1><%= @post.title %></h1>
+	<p><i>By <b><%= @post.user.login rescue nil %></b> on <%= @post.posted_on.localtime.strftime('%d/%m/%Y %H:%M')%> </i></p>
+	<p><%= @post.content %></p>
+</div>
+      
+      
+
+<script>
+ 
+/*
+  $(function() {
+    
+      var customConfirmBox;
+      customConfirmBox = function(message, callback) {
+          alert("DEF" + message);
+      };
+    
+      $.rails.allowAction = function(element) {
+          alert("ABC");
+         var answer, message;
+         message = element.data('confirm');
+         answer = false;
+         if (message == null) return true;
+         if ($.rails.fire(element, 'confirm')) {
+           customConfirmBox(message, function() {
+             var callback, oldAllowAction;
+             callback = $.rails.fire(element, 'confirm:complete', [answer]);
+             if (callback != null) {
+               oldAllowAction = $.rails.allowAction;
+               $.rails.allowAction = function() {
+                 return true;
+               };
+               element.trigger('click');
+               return $.rails.allowAction = oldAllowAction;
+             }
+           });
+         }
+         return false;
+       };
+        
+         
+  });
+  
+*/
+</script>

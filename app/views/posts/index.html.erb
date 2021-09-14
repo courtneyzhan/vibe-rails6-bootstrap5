@@ -1,0 +1,49 @@
+<% unless current_user %>
+<div>You are not logged in.</div>
+<% end %>
+
+<% if current_user %>
+<div style="float:right;">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <div class="btn-group" role="group">
+    <button id="btnGroup" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-plus" aria-hidden="true"></i> New Entry
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li><a class="dropdown-item" href="/posts/new?post_type=Gratitude">Gratitude Entry</a></li>
+        <li><a class="dropdown-item" href="/posts/new?post_type=Question">Question Entry</a></li>
+        <li><a class="dropdown-item" href="/posts/new?post_type=Personal">Personal Entry</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<h1 class="text-secondary"><% if current_user %>My <% end %>Posts</h1>
+
+<div id="wrap-posts">
+<% @posts.each do |post| %>
+    <div class="card post">
+      <div class="card-body" data-post="/posts/<%= post.id %>">
+          <h4 class="card-title"><%= post.title %></h4>
+            <h6 class="card-title" style="font-style:italic"><i class="fas fa-user" aria-hidden="true"></i> <%= post.user.login %> | <i class="fas fa-calendar-day" aria-hidden="true"></i> <%= post.posted_on.to_s %></h6>
+          <p class="card-text"><%= post.content %></p>
+      </div>
+    </div>
+    
+    <br>    
+<% end %>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+      $("div.card-body").bind("click", function() {        
+        var post_url = $(this).attr('data-post');
+        window.location.href = post_url;
+      });
+      
+    });
+</script>

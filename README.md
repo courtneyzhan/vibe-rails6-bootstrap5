@@ -1,2 +1,9 @@
-# vibe-rails6-bootstrap5
-Sample Rails 6 Project with Bootstrap 5
+# README
+
+## Set up
+
+rm -rf node_modules
+rake webpacker:clobber
+npm install
+yarn --check-files
+rake webpacker:compile

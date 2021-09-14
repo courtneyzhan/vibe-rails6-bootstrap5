@@ -1,0 +1,117 @@
+
+// Just a quick ugly style to see if our CSS works  
+
+div.form-group.row {
+    margin-top: 10px;
+}
+
+h1, h1 {
+    font-size: calc(1.375rem + 1.5vw);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+text-secondary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
+}
+
+span.asteriskField {
+    color: red;
+    margin-left: 5px;
+}
+
+.reg-block {
+    width: 350px;
+    padding: 20px;
+	padding-right: 40px;
+    margin: 60px auto;
+    background: #fff;
+    border-top: solid 2px #72c02c;
+}
+
+#login-form input[type='text'], #login-form input[type='password'] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#login-form i, #login-form input {
+    font-size: 20px;
+}
+
+.header {
+    background-color: red;
+    background-position: top;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    clear: both;
+}
+
+.main_menu {
+    color: #507ec0;
+    padding: 0 1.5em 0 0.5em;
+    float: right;
+    line-height: 12px !important;
+}
+
+#content {
+    padding-left: 1.5em;
+}
+
+.footer {
+    margin-top: 1rem;
+    font-size: 0.85em;
+    color: #999;
+    text-align: right;
+    clear: both;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.footer .version {
+}
+
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;   
+}
+
+div.post-actions {
+    float: right;
+    position: absolute;
+    right: 1%;
+}
+
+#error_explanation {
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+ 
+}
+
+
+div.card.post:hover {
+    background-color: #FFCCCC;
+}
+
+div#wrap-posts>div.card {
+    cursor: hand;
+}
+
+
+
+// Import Bootstrap v5  
+@import "~bootstrap/scss/bootstrap";  

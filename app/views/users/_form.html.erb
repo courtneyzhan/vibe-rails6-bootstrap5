@@ -1,0 +1,118 @@
+<%= form_for(user, local: true, :class => "col s12") do |form| %>
+  <% if user.errors.any? %>
+    <%= errors_for(user) %>
+  <% end %>
+
+  <input type="hidden" name="refer_page" value="<%= @refer_page %>"/>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-md-2 col-form-label"><%= t(:login) %></label>
+        <div class="col-sm-8 col-md-4">       
+           <%= form.text_field :login, id: :id_username, :disabled => !user.new_record?, :required => true, :class => "form-control", :placeholder => t(:login) %>
+        </div>    
+    </div>
+    
+    <% unless user.new_record? %>
+    <div class="form-group row">
+        <label class="col-sm-4 col-md-2 col-form-label"><%= t(:first_name) %></label>
+        <div class="col-sm-8 col-md-4">        
+           <%= form.text_field :first_name, id: :user_first_name, :class => "form-control", :placeholder => t(:first_name) %>
+        </div>    
+        <label class="col-sm-4 col-md-2 col-form-label"><%= t(:last_name) %></label>
+        <div class="col-sm-8 col-md-4">        
+          <%= form.text_field :last_name, id: :user_last_name, :class => "form-control", :placeholder => t(:last_name) %>
+        </div>    
+    </div>
+  
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t(:email) %></label>
+      <div class="col-sm-8 col-md-4">              
+        <%= form.email_field :email, id: :user_email, :class => "form-control", :placeholder => t(:email), :disabled => user.email %>
+     </div>
+      <label class="col-sm-2 col-form-label"><%= t(:mobile) %>   </label>
+      <div class="col-sm-8 col-md-4">              
+        <%= form.text_field :mobile, id: :user_mobile, :placeholder => t(:mobile), :class => "form-control" %>
+      </div>
+    </div>
+    
+    <% end %>
+    
+    <div class="form-group row">
+       <label class="col-sm-2 col-form-label"><%= t(:password) %></label>
+       <div class="col-sm-4 col-md-4">              
+          <%= form.password_field :password, id: :id_password1, :class => "form-control", :placeholder => t(:password) %>
+       </div>
+       <label class="col-sm-2 col-form-label"><%= t(:confirm_password) %></label>
+       <div class="col-sm-4 col-md-4">              
+         <input id="id_password2" type="password" name="user[password_confirmation]" class="form-control" placeholder="<%= t(:password) %>"></input>
+       </div>
+    </div>
+  
+  <% unless user.new_record? %>
+  
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t(:locale) %></label>
+      <div class="col-sm-4 col-md-4">                    
+        <select name="user[locale]" id="user_locale">
+          <option value="0" <% if @user.locale.nil? %> selected="" <% end %> disabled=""><%= t(:locale) %></option>
+          <option <% if @user.locale == 'zh-CN' %>selected="true"<% end %> value="zh-CN">中文简体</option>
+          <option <% if @user.locale == 'zh-TW' %>selected="true"<% end %> value="zh-TW">中文繁体</option>
+          <option <% if @user.locale == 'en-AU' %>selected="true"<% end %>  value="en-AU">English (Australia)</option>
+          <option <% if @user.locale == 'en-US' %>selected="true"<% end %>  value="en-US">English - (United States)</option>
+          <option <% if @user.locale == 'en-UK' %>selected="true"<% end %>  value="en-UK">English - (United Kingdom)</option>
+        </select>
+      </div>
+      <label class="col-sm-2 col-form-label"><%= t(:time_zone) %></label>
+      <div class="col-sm-4 col-md-4">                    
+      <select id="user_time_zone" name="user[time_zone]">
+          <option <% if @user.time_zone == 'Australia/Brisbane' %>selected="true"<% end %>   value="Australia/Brisbane">Australia - Brisbane</option>
+          <option <% if @user.time_zone == 'Australia/Sydney' %>selected="true"<% end %>   value="Australia/Sydney">Australia - Sydney</option>
+          <option <% if @user.time_zone == 'Australia/Adelaide' %>selected="true"<% end %> value="Australia/Adelaide">Australia - Adelaide</option>
+          <option <% if @user.time_zone == 'Australia/Melbourne' %>selected="true"<% end %> value="Australia/Melbourne">Australia - Melbourne</option>
+          <option <% if @user.time_zone == 'Australia/Perth' %>selected="true"<% end %> value="Australia/Perth">Australia - Perth</option>
+          <option <% if @user.time_zone == 'Australia/Darwin' %>selected="true"<% end %> value="Australia/Darwin">Australia - Darwin</option>
+          <option <% if @user.time_zone == 'Australia/Hobart' %>selected="true"<% end %> value="Australia/Hobart">Australia - Hobart</option>
+        </select>
+      </div>
+  </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t(:gender) %></label>
+      <div class="col-sm-4 col-md-4">                    
+        <%= form.select :gender, [ [t(:please_select), ""], [t(:male), "Male"], [t(:female), "Female"]], id: :user_gender, :placeholder => t(:gender) %>
+      </div>
+      <label class="col-sm-2 col-form-label"><%= t(:birth_date) %></label>
+      <div class="col-sm-4 col-md-4">                    
+        <%= form.text_field :birth_date, id: :user_birth_date, :class => "form-control ", :placeholder => t(:birth_date) + " e.g. 1978-01-27" %>
+      </div>
+  </div>
+
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t(:avatar) %>:</label>
+      <div class="col-sm-10 col-md-6">                    
+        <%= form.file_field :avatar, id: :user_avatar, :placeholder => t(:avatar) %>
+      </div>
+    </div>
+
+<% end %>
+
+  <!-- <%= @user.time_zone %> | <%= Time.zone %> -->
+  <div class="form-group row" style="margin-top: 10px;">
+    <div class="col-sm-2 col-form-label"></div>
+    <div class="col-sm-10" style="padding-left: 2rem;">
+      <button class="btn btn-primary" id="save-btn" type="submit" name="action" value=""><%= user.new_record? ? t(:create_account) : t(:save) %></button>
+      &nbsp; <a href="/" class="btn btn-light"><%= t(:cancel) %></a>
+    </div>
+  </div>
+
+<% end %>
+
+<br/>
+<br/>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
