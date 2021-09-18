@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   get "posts/:id/delete" => "posts#destroy"
   
+  get "calendar" => "calendar#index"  
 
   resources :sessions
   resources :users
