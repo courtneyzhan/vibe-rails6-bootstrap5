@@ -21,7 +21,7 @@ connection = ActiveRecord::Base.connection
 ActiveRecord::Base.transaction do
 
 
-  model_list = [User, Post]
+  model_list = [User, Post, Mood]
   
   model_list.each do |model|
     next unless defined?(model)

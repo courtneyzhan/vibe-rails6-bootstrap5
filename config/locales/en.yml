@@ -48,3 +48,4 @@ en:
   login: "Login"
   create_account: "Create Account"
   database_reset: "Database has been reset successfully"
+  not_authorized: "Not authorized"

@@ -49,6 +49,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/posts">Posts</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/moods">Moods</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -140,7 +143,7 @@
 	
 	<div class="footer row" style="margin-top: 0px; margin-bottom: 15px; border-top: 1px solid #ddd; padding-top: 5px;">
 	    <div class="col-sm-12 col-md-6 slogan">
-	        Vibe v0.2 (<%= RUBY_VERSION %>, <%=  Rails.version rescue nil %>)
+	        Vibe v0.2.2 (Env: <%= Rails.env %>,  <%= RUBY_VERSION %>, <%=  Rails.version rescue nil %>)
 	    </div>
 	</div>
   </body>

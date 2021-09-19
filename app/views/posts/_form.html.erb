@@ -3,39 +3,38 @@
 <%= form_with(model: post) do |form| %>
 
   <%= form.hidden_field :post_type %>
-  
-  <% if post.errors.any? %>  
+
+  <% if post.errors.any? %>
      <%= errors_for(post) %>
   <% end %>
-  
-    <div id="div_id_title" class="form-group row"> 
+
+    <adsf id="div_id_title" class="form-group row">
       <label for="id_title" class=" requiredField">
-	    Title<span class="asteriskField">*</span> </label> <div class=""> 
-	    <%= form.text_field :title , :id => "id_title", :class => "textinput textInput form-control"%>  
+	    Title<span class="asteriskField">*</span> </label> <div class="">
+	    <%= form.text_field :title , :id => "id_title", :class => "textinput textInput form-control"%>
     </div>
-    
-    
-    <div id="div_id_content" class="form-group row"> 
+
+
+    <div id="div_id_content" class="form-group row">
       <label for="id_content" class=" requiredField">
         Content<span class="asteriskField">*</span> </label>
-                    
+
          <div class="">
-           <%= form.text_area :content , :id => "id_content", :rows => 10, :class => "textarea form-control"%>                                 
+           <%= form.text_area :content , :id => "id_content", :rows => 10, :class => "textarea form-control"%>
          </div>
     </div>
-    
+
     <% unless post.new_record? %>
-       <div  class="form-group row"> 
-            
-       <label for="id_title" class=" requiredField">
-         Posted on:
-          <div class="">           
-           <%= form.datetime_field :posted_on , :id => "id_date_posted"%>                                 
+       <div  class="form-group row">
+
+       <label for="id_date_posted" class=" requiredField">
+         Posted on: </label>
+          <div class="">
+           <%= form.datetime_field :posted_on , :id => "id_date_posted"%>
           </div>
 	      </div>
-      </div>
     <% end %>
-            
+
   <div class="actions" style="margin-top: 10px;">
     <%= form.submit post.new_record? ? t(:create): t(:save), :id => "new-post-btn", :class => "btn btn-primary" %>
     &nbsp;

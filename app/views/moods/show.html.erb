@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <table>
+    <tbody>
+    <tr>
+      <td >
+        <strong>Mood:</strong>
+      </td>
+      <td>
+        <%= @mood.mood %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Date:</strong>
+      </td>
+      <td>
+        <%= @mood.date.strftime('%d-%b-%Y') %>
+      </td>
+    </tr>
+
+      <br/>
+
+
+    </tbody>
+
+  </table>
+
+
+  <%= link_to 'Edit', edit_mood_path(@mood), :class => "btn btn-light" %> |
+  <%= link_to 'Destroy', @mood, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :id => "delete-btn" %>
+
+  <%#= link_to 'Back', moods_path %>
+
+</div>

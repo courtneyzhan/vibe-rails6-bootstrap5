@@ -1,0 +1,31 @@
+<%= form_with(model: mood) do |form| %>
+  <% if mood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mood.errors.count, "error") %> prohibited this mood from being saved:</h2>
+
+      <ul>
+        <% mood.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="div_id_mood" class="form-group row">
+    <div class="field">
+      <label for="id_mood" class=" requiredField">Mood<span class="asteriskField">*</span> </label>
+      <%= form.select :mood, ["", "Very Positive", "Positive", "Neutral", "Negative", "Very Negative"],  :id => "id_mood", :class => "form_control" %>
+    </div>
+  </div>
+
+  <div id="div_id_date" class="form-group row">
+    <div class="field">
+      <label for="id_date" class=" requiredField">Date<span class="asteriskField">*</span> </label>
+      <%= form.date_field :date, :value => Time.now.strftime('%Y-%m-%d'), :id => "id_date" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :id => "save-mood-btn", :class => "btn btn-primary" %>
+  </div>
+<% end %>
