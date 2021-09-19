@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_09_19_094014) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "date"], name: "index_moods_on_user_id_and_date", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
