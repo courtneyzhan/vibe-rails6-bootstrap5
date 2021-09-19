@@ -19,6 +19,13 @@ class PostsController < SecureController
     else
       @posts = the_posts.where("posted_on >= ? and post_type != ?",  24.hours.ago, "Personal")
     end
+    
+    if @post_type == "Question" && current_user
+      # based on user's answered questions, display same question
+      user_answered_qids = Post.where(:user_id => current_user.id).pluck(:question_id).compact.uniq
+      @posts = Post.where("question_id in (?)", user_answered_qids)
+    end
+
   end
 
   # GET /posts/1 or /posts/1.json

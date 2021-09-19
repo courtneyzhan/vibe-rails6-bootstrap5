@@ -19,8 +19,10 @@
 </div>
 <% end %>
 
-<h1 class="text-secondary"><% if current_user %>My <% end %>Posts</h1>
+<h1 class="text-secondary"><% if current_user %>My <% end %>
+  <% if @post_type == "Gratitude" %>Gratitude <%  elsif @post_type == "Question" %>Reflective Question <% elsif @post_type == "Personal" %>Personal <% end %>Posts</h1>
 
+<% if @posts %>
 <div id="wrap-posts">
 <% @posts.each do |post| %>
     <div class="card post">
@@ -34,7 +36,7 @@
     <br>    
 <% end %>
 </div>
-
+<% end %>
 
 
 <script type="text/javascript">
