@@ -5,7 +5,13 @@ class PostsController < SecureController
   
   # GET /posts or /posts.json
   def index
+    
+    @post_type = params[:type]    
     the_posts = Post.all
+    if !@post_type.blank?
+      the_posts = the_posts.where(:post_type => @post_type)
+    end
+    
     if current_user && current_user.is_admin?
       @posts = the_posts
     elsif current_user
@@ -26,9 +32,10 @@ class PostsController < SecureController
       @post.post_type = "Gratitude"
       @post.title = "What are you grateful for today?"
     elsif params[:post_type] == "Question"
-      @post.post_type = "Question"      
-      random_question = ["I can't imagine living without...", "What inspires you?", "What would you do if you knew you could not fail?", "What did you achieve today?"].sample
-      @post.title = random_question
+      @post.post_type = "Question"
+      @post.question = Question.all.to_a.sample
+      # random_question = ["I can't imagine living without...", "What inspires you?", "What would you do if you knew you could not fail?", "What did you achieve today?"].sample
+      @post.title = @post.question.title
     else
       @post.post_type = "Personal"
     end
@@ -89,8 +96,7 @@ class PostsController < SecureController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.fetch(:post).permit(:title, :content, :posted_on, :post_type)
-      
+      params.fetch(:post).permit(:title, :content, :posted_on, :post_type, :question_id)      
       # params.fetch(:post, {:title, :content})
     end
 end

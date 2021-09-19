@@ -3,6 +3,7 @@
 <%= form_with(model: post) do |form| %>
 
   <%= form.hidden_field :post_type %>
+  <%= form.hidden_field :question_id %>
 
   <% if post.errors.any? %>
      <%= errors_for(post) %>

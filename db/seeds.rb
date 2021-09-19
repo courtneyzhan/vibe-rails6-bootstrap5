@@ -21,7 +21,7 @@ connection = ActiveRecord::Base.connection
 ActiveRecord::Base.transaction do
 
 
-  model_list = [User, Post, Mood]
+  model_list = [User, Post, Mood, Question]
   
   model_list.each do |model|
     next unless defined?(model)
@@ -42,7 +42,12 @@ ActiveRecord::Base.transaction do
       end
     end
   end
-    
+  
+  ["I can't imagine living without...", "What inspires you?", "What would you do if you knew you could not fail?", "What did you achieve today?"].each do |q|
+     Question.create(:title => q)
+  end
+     
+   
     
   User.create(:login => "vibeadmin", :password => "Vibing123!", :email => "admin@user.com", :activated => true)
   User.create(:login => "stevie", :password => "testtest01", :email => "stevie@user.com", :activated => true)
