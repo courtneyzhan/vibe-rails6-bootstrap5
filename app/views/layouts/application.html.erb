@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>Vibe</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Vibe using Ruby on Rails">
     <%= csrf_meta_tags %>
@@ -114,11 +114,10 @@
         
       </ul>
       
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <%= form_tag("/search", :id => "search_form", :class => "d-flex") do %>
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit" id="search-btn"><i class="fa fa-search"  aria-hidden="true"></i></button>
-      </form>
-       
+      <% end %>
     </div>
   
   
@@ -156,9 +155,9 @@
     	<%= yield %>
 	</div>
 	
-	<div class="footer row" style="margin-top: 0px; margin-bottom: 15px; border-top: 1px solid #ddd; padding-top: 5px;">
+	<div class="footer row" style="margin-top: 10px; margin-bottom: 15px; border-top: 1px solid #ddd; padding-top: 5px;">
 	    <div class="col-sm-12 col-md-6 slogan">
-	        Vibe v0.3 (Env: <%= Rails.env %>,  Powered by Ruby <%= RUBY_VERSION %> on Rails <%=  Rails.version rescue nil %>)
+	        Vibe v0.3.1 (Env: <%= Rails.env %>,  Powered by Ruby <%= RUBY_VERSION %> on Rails <%=  Rails.version rescue nil %>)
 	    </div>
 	</div>
   </body>

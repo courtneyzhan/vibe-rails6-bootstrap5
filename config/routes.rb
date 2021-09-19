@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   end
   
   get "posts/:id/delete" => "posts#destroy"
-  
+  get "search" => "posts#index", :as => "get-search"
+  post "search" => "posts#search", :as => "search"
   get "calendar" => "calendar#index"  
 
   resources :sessions

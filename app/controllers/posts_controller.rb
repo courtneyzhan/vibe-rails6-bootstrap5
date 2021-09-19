@@ -27,6 +27,31 @@ class PostsController < SecureController
     end
 
   end
+  
+  def search  
+    @search = params[:search]
+    
+    the_posts = Post.all
+    if current_user && current_user.is_admin?
+      the_posts = the_posts
+    elsif current_user
+      the_posts = the_posts.where("user_id = ?", current_user.id)       
+    else
+      the_posts = the_posts.where("posted_on >= ? and post_type != ?",  24.hours.ago, "Personal")
+    end
+=begin    
+    if @post_type == "Question" && current_user
+      # based on user's answered questions, display same question
+      user_answered_qids = Post.where(:user_id => current_user.id).pluck(:question_id).compact.uniq
+      @posts = Post.where("question_id in (?)", user_answered_qids)
+    end
+=end
+    if @search.blank?
+      @posts = the_posts
+    else 
+      @posts = the_posts.where("title LIKE ? OR content LIKE ?", "%#{@search}%", "%#{@search}%")
+    end   
+  end
 
   # GET /posts/1 or /posts/1.json
   def show

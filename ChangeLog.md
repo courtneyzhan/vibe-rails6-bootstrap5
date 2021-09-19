@@ -1,4 +1,8 @@
 
+v0.3.1 (09-20)
+
+* [Feature] Simple search
+
 v0.3 (09-19)
 
 * [Feature] Separate Post menu item to three menus in navbars 

@@ -1,0 +1,18 @@
+<h2>Search</h2>
+
+
+  <div id="wrap-posts">
+    <% @posts.each do |post| %>
+      <div class="card post">
+        <div class="card-body" data-post="/posts/<%= post.id %>">
+          <h4 class="card-title"><%= post.title %></h4>
+          <h6 class="card-title" style="font-style:italic">
+            <i class="fas fa-user" aria-hidden="true"></i> <%= post.user.login %> |
+            <i class="fas fa-calendar-day" aria-hidden="true"></i> <%= post.posted_on.to_s %></h6>
+          <p class="card-text"><%= post.content %></p>
+        </div>
+      </div>
+
+      <br>
+    <% end %>
+  </div>
