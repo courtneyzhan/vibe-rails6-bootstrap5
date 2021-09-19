@@ -30,7 +30,7 @@ class MoodsController < SecureController
     @mood.user = current_user
     respond_to do |format|
       if @mood.save
-        format.html { redirect_to @mood, notice: "Mood was successfully created." }
+        format.html { redirect_to moods_path, notice: "Mood was successfully created." }
         format.json { render :show, status: :created, location: @mood }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class MoodsController < SecureController
   def update
     respond_to do |format|
       if @mood.update(mood_params)
-        format.html { redirect_to @mood, notice: "Mood was successfully updated." }
+        format.html { redirect_to moods_path, notice: "Mood was successfully updated." }
         format.json { render :show, status: :ok, location: @mood }
       else
         format.html { render :edit, status: :unprocessable_entity }

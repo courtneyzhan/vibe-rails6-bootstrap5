@@ -2,4 +2,6 @@ class Mood < ApplicationRecord
   belongs_to :user
 
   validates :mood, presence: true
+  # validates :mood, uniqueness: true
+
 end
