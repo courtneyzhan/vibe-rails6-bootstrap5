@@ -6,6 +6,21 @@
        
 <script type="text/javascript">
     var chart = null;
+
+    function mood_display(val) {
+      if (val == 1) {
+          return "Very Negative";
+      } else if (val == 2) {
+          return "Negative";
+      } else if (val == 3) {
+          return "Neutral";
+      } else if (val == 4) {
+          return "Positive";
+      }  else {
+          return "Very Positive";
+      }
+    }
+
     $(document).ready(function () {
 
         chart = new Highcharts.chart('project-chart', {
@@ -38,7 +53,7 @@
             },
             tooltip: {
                 formatter: function () {
-                    return Highcharts.dateFormat('%A, %e %b', new Date(this.x)) + "<br/><b>" + this.y + "</b>";
+                    return Highcharts.dateFormat('%A, %e %b', new Date(this.x)) + "<br/><b>" + mood_display(this.y) + "</b>";
                 }
             },
             plotOptions: {
