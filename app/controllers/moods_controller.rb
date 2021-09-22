@@ -18,6 +18,15 @@ class MoodsController < SecureController
   # GET /moods/new
   def new
     @mood = Mood.new
+    if !params[:date].blank?
+      begin
+        @mood.date = Date.parse(params[:date])
+      rescue =>e
+        @mood.date = Date.today
+      end
+    else
+      @mood.date = Date.today
+    end
   end
 
   # GET /moods/1/edit
