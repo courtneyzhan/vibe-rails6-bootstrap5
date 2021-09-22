@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "search" => "posts#index", :as => "get-search"
   post "search" => "posts#search", :as => "search"
   get "calendar" => "calendar#index"  
+  get "charts" => "charts#index"  
 
   resources :sessions
   resources :users

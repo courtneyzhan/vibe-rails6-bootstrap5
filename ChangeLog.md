@@ -1,4 +1,9 @@
 
+v0.4 (09-22)
+
+* [Feature] Charts (yan add highcharts)
+
+
 v0.3.1 (09-20)
 
 * [Feature] Simple search

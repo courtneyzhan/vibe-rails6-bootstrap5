@@ -15,10 +15,15 @@ ActiveStorage.start()
 import "jquery"
 import "@fortawesome/fontawesome-free/js/all";
 
+// import Highcharts from 'highcharts';
+
 // seems just import all (see below) workl better? can't import both
 // import '../js/bootstrap_js_files.js'
 
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js';
+
+import Highcharts from 'highcharts'
+window.Highcharts = Highcharts;
 
 $(document).ready(function(){ 
 

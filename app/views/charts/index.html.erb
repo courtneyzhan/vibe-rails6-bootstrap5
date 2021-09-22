@@ -1,0 +1,97 @@
+<h2>Charts</h2>
+
+
+<div class="build-history-chart-container" id="project-chart" style=""></div>
+
+
+<figure class="highcharts-figure">
+   <div id="container-performance-timings"></div>
+</figure>	 
+
+
+       
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        Highcharts.chart('project-chart', {
+            chart: {
+                type: 'column',
+                backgroundColor: null
+
+            },
+            title: {
+                text: ''
+            },
+            credits: {
+                enabled: false
+            },
+            xAxis: {
+                labels: {
+                    enabled: false
+                },
+                title: {
+                    text: null
+                },
+                startOnTick: false,
+                endOnTick: false,
+                tickPositions: []
+            },
+            yAxis: {
+                endOnTick: false,
+                startOnTick: false,
+                labels: {
+                    enabled: false
+                },
+                title: {
+                    text: null
+                },
+                tickPositions: [0]
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                // positioner: function () {
+                //    return { x: 0, y: 0 };
+                // },
+                formatter: function () {
+                    return '<span style="font-size:10px">#' + this.point.id + ' </span> <span style="font-size:10px;"><b>' + this.point.duration + '</b></span><br/>' + '<span style="font-size:10px">' + this.point.time + '</span>';
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.15,
+                    borderWidth: 0
+                },
+                series: {
+                    animation: false,
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function () {
+                                window.location.href = "/builds/" + this.id;
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'time',
+                maxPointWidth: 10,
+                data: [{"id":6295,"time":"2021-03-01 20:14","color":"#8BC34A","y":22.0,"duration":"22 sec"},{"id":6296,"time":"2021-03-01 20:14","color":"#8BC34A","y":23.0,"duration":"23 sec"},{"id":6299,"time":"2021-03-05 08:59","color":"#8BC34A","y":31.0,"duration":"31 sec"},{"id":6305,"time":"2021-03-19 16:10","color":"#8BC34A","y":29.0,"duration":"29 sec"},{"id":6306,"time":"2021-03-19 16:10","color":"#8BC34A","y":26.0,"duration":"26 sec"},{"id":6307,"time":"2021-03-19 16:12","color":"#8BC34A","y":25.0,"duration":"25 sec"},{"id":6308,"time":"2021-03-19 16:13","color":"#8BC34A","y":22.0,"duration":"22 sec"},{"id":6343,"time":"2021-04-10 17:12","color":"#8BC34A","y":20.0,"duration":"20 sec"},{"id":6369,"time":"2021-06-08 02:52","color":"#ff6b68","y":19.0,"duration":"19 sec"},{"id":6370,"time":"2021-06-08 02:56","color":"#ff6b68","y":17.0,"duration":"17 sec"},{"id":6371,"time":"2021-06-08 03:00","color":"#8BC34A","y":21.0,"duration":"21 sec"},{"id":6377,"time":"2021-06-26 18:49","color":"#8BC34A","y":22.0,"duration":"22 sec"},{"id":6466,"time":"2021-08-24 08:31","color":"#8BC34A","y":27.0,"duration":"27 sec"},{"id":6475,"time":"2021-09-08 19:12","color":"#8BC34A","y":26.0,"duration":"26 sec"},{"id":6487,"time":"2021-09-22 17:05","color":"#8BC34A","y":26.0,"duration":"26 sec"}]
+            }]
+        });
+
+
+				// highlight code in test output
+				$('pre code').each(function(i, block) {
+				    hljs.highlightBlock(block);
+				});
+
+          // for s
+
+    });
+
+</script>
+	
